@@ -1,6 +1,5 @@
 .wbdv-field.wbdv-username {
-    display: block;
-    margin: auto;
+    text-align: left;
 }
 
 .form-control.wbdv-field wbdv-password{
@@ -8,18 +7,20 @@
 }
 
 .wbdv-button.wbdv-login{
-    display: block;
-    margin: auto;
 
 }
 
-
 .wbdv-link.wbdv-forgot-password{
-
+}
+.wbdv-link.wbdv-forgot-password:hover{
+    font-size: large;
 }
 
 .wbdv-link.wbdv-register{
 
+}
+.wbdv-link.wbdv-register:hover{
+    font-size: large;
 }
 .container{
     position: absolute;

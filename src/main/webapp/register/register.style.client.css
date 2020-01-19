@@ -7,15 +7,20 @@ wbdv-field.wbdv-password{
 
 }
 
-wbdv-button.wbdv-login{
+.wbdv-field.wbdv-password-verify{
 
 }
 
-wbdv-link.wbdv-forgot-password{
+.wbdv-button.wbdv-register{
 
 }
 
-wbdv-link.wbdv-register{
+.wbdv-link.wbdv-login{
+
+}
+
+.wbdv-link.wbdv-login:hover{
+    font-size: large;
 
 }
 
