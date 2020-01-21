@@ -1,0 +1,103 @@
+.wbdv-field.wbdv-hamburger{
+    font-size: 26px;
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+
+}
+.wbdv-label.wbdv-course-manager{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+    font-weight: bold;
+
+}
+.wbdv-field.wbdv-new-course{
+    background-color: #1e90ff;
+    border: 0px;
+    font-style: italic;
+    font-weight: bold;
+    position: center;
+    color: white;
+}
+
+.wbdv-field.wbdv-new-course::placeholder{
+    color: white;
+    font-size: 19px;
+    padding: unset;
+}
+
+
+.wbdv-button.wbdv-add-course{
+    margin: 0 auto;
+    font-size: 32px;
+    color: red;
+    padding: 0px;
+    padding-top: 0px;
+
+}
+.fa.fa-plus-circle{
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.wbdv-header.wbdv-title{
+
+}
+
+.wbdv-header.wbdv-owner{
+
+}
+
+.wbdv-header.wbdv-last-modified{
+
+}
+.wbdv-button.wbdv-grid-layout{
+
+}
+.wbdv-button.wbdv-list-layout {
+    visibility: hidden;
+}
+.wbdv-header.wbdv-sort{
+
+}
+.wbdv-row.wbdv-course{
+
+}
+.wbdv-row.wbdv-icon{
+
+}
+.wbdv-row.wbdv-title{
+
+}
+.wbdv-row.wbdv-owner{
+
+}
+.wbdv-row.wbdv-modified-date{
+
+}
+.wbdv-row.wbdv-button.wbdv-delete {
+    float: right;
+}
+.navbar{
+    background-color: #0f64f2;
+}
+
+thead {
+    background-color: lightgray;
+}
+
+@media only screen and (max-width: 992px) {
+    .tablecollapse {
+        display: none;
+    }
+}
+
+.fa-file-alt {
+    margin-right: 15px;
+    color: #0f64f2;
+}
+
+
+
