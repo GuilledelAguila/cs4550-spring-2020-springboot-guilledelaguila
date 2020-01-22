@@ -1,0 +1,149 @@
+.nav{
+    background-color: #4b5054;
+    border: 0px;
+}
+.container-fluid{
+    position: absolute;
+    bottom: 0px;
+    top: 0px;
+
+}
+
+.nav-link{
+    color: white;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.nav-link:hover{
+    color: white;
+    border: 0px;
+    background-color: #363b3e;
+}
+
+.navbar-brand{
+    color: white;
+    text-align: left;
+
+}
+.wbdv-course-editor.wbdv-close{
+    color: white ;
+}
+.wbdv-course-editor.wbdv-close:hover{
+    background-color: #363b3e;
+}
+.nav-link.wbdv-new-page-btn{
+    color: white;
+
+
+}
+.nav-link.wbdv-new-page-btn:hover{
+    color: white;
+
+}
+
+.wbdv-module-item{
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    background-color: #4b5054;
+    color: white;
+}
+.wbdv-module-item-title{
+
+
+}
+.colstretch{
+    background-color: #363b3e;
+    height: 100%;
+
+}
+.wbdv-module-item-delete-btn{
+    color: white;
+    float: right;
+    padding: 0px;
+
+}
+.wbdv-module-item-add-btn{
+    float: right;
+    margin-right: 10px;
+    color: white;
+    font-size: x-large;
+}
+.wbdv-module-item-add-btn:hover{
+    color: white;
+    font-size: xx-large;
+}
+.wbdv-module-item-delete-btn:hover{
+    color: white;
+    font-size: larger;
+}
+
+.mycol{
+    padding: 0px;
+}
+.last-row{
+    min-height: 100vh;
+    height: 100%;
+}
+.wbdv-topic-pill-list{
+    background-color: white;
+}
+.wbdv-topic-pill{
+    background-color:  #4b5054;
+    margin-left: 30px;
+    margin-top: 20px;
+
+}
+.wbdv-topic-add-btn{
+    color: white;
+    background-color: #4b5054;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+.wbdv-topic-add-btn:hover{
+    color: white;
+    font-size: large;
+}
+
+.wbdv-topic-save-btn{
+    background-color: green;
+    border: 0px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.wbdv-topic-toggle-btn{
+    background-color: white;
+    margin-right: 20px;
+    font-size: larger;
+    font-weight: bold;
+}
+.wbdv-widget-btn{
+    margin-left: 10px;
+}
+.wbdv-widget-btn.wbdv-widget-arrow-up-btn{
+    background-color: orange;
+    border: 0px;
+}
+.wbdv-widget-btn.wbdv-widget-heading-btn{
+    color: black;
+    background-color: white;
+}
+
+.wbdv-widget-btn.wbdv-widget-cross-btn{
+    background-color: red;
+    border: 0px;
+}
+.wbdv-widget-btn.wbdv-widget-cross-btn:hover{
+    background-color: red;
+    border: 0px;
+}
+.wbdv-widget-add-btn.wbdv-widget-btn{
+    background-color: white;
+    color: red;
+    border: 0px;
+    font-size: xx-large;
+    float: right;
+}
