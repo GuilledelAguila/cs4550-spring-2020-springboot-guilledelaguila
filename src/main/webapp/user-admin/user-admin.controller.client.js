@@ -87,6 +87,8 @@
 
     }
     function selectUser() {
+        $updateBtn.removeClass('wbdv-hidden')
+        $createBtn.addClass('wbdv-hidden')
         $usernameFld.val(selectedUser.username)
         $firstNameFld.val(selectedUser.firstName)
         $lastNameFld.val(selectedUser.lastName)
@@ -113,6 +115,8 @@
         $firstNameFld.val("")
         $lastNameFld.val("")
         $roleFld.val("FACULTY")
+        $updateBtn.addClass('wbdv-hidden')
+        $createBtn.removeClass('wbdv-hidden')
 
         updatedUser._id = users[currentUserIndex]._id
 
@@ -132,17 +136,12 @@
         $tbody = $("tbody")
         $userRowTemplate= $('.wbdv-template')
 
-
         $createBtn = $('.wbdv-create')
         $createBtn.click(createUser)
         $updateBtn = $('.wbdv-update')
         $updateBtn.click(updateUser)
 
-
-
         $(findAllUsers())
-
-
 
     }
     $(main)
