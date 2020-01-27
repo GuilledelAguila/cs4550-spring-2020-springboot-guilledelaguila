@@ -42,6 +42,17 @@
         $tbody.append(rowClone)
     }
 
+    function deleteUser(index){
+        let user = users[index]
+        let userId = user._id
+        userService.deleteUser(userId)
+            .then(response => {
+                users.splice(index, 1)
+                //renderUsers()
+                findAllUsers()
+            })
+    }
+
     function main(){
         $usernameFld = $('#usernameFld')
         $passwordFld = $('#passwordFld')
