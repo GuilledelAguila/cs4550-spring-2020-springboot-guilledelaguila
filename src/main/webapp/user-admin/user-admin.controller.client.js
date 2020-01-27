@@ -53,6 +53,28 @@
             })
     }
 
+    function createUser() {
+        const newUser = {
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            role: $roleFld.val()
+        }
+        $usernameFld.val("")
+        $passwordFld.val("")
+        $firstNameFld.val("")
+        $lastNameFld.val("")
+        $roleFld.val("FACULTY")
+
+        userService.createUser(newUser)
+            .then((actualUser) => {
+                // users.push(actualUser)
+                //renderUsers()
+                findAllUsers()
+            })
+    }
+
     function main(){
         $usernameFld = $('#usernameFld')
         $passwordFld = $('#passwordFld')
@@ -64,8 +86,8 @@
         $userRowTemplate= $('.wbdv-template')
 
 
-        // $createBtn = $('.wbdv-create')
-        // $createBtn.click(createUser)
+        $createBtn = $('.wbdv-create')
+        $createBtn.click(createUser)
         // $updateBtn = $('.wbdv-update')
         // $updateBtn.click(updateUser)
 
