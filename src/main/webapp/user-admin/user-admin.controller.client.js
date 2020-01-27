@@ -74,6 +74,53 @@
                 findAllUsers()
             })
     }
+    function findUserById(index) {
+        currentUserIndex = index
+        let user = users[index]
+        let userId = user._id
+
+        userService.findUserById(userId)
+            .then(actualUser => {
+                selectedUser = actualUser
+                selectUser()
+            })
+
+    }
+    function selectUser() {
+        $usernameFld.val(selectedUser.username)
+        $firstNameFld.val(selectedUser.firstName)
+        $lastNameFld.val(selectedUser.lastName)
+        $roleFld.val(selectedUser.role)
+        //$passwordFld.val(selectedUser.password)
+    }
+
+    function updateUser() {
+        const updatedUser = {
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            role: $roleFld.val()
+        }
+        if(!updatedUser.password){
+            updatedUser.password = selectedUser.password
+        }
+        if(!updatedUser.username){
+            updatedUser.username = selectedUser.username
+        }
+        $usernameFld.val("")
+        $passwordFld.val("")
+        $firstNameFld.val("")
+        $lastNameFld.val("")
+        $roleFld.val("FACULTY")
+
+        updatedUser._id = users[currentUserIndex]._id
+
+        userService.updateUser(updatedUser._id, updatedUser)
+            .then((actualUser) => {
+                findAllUsers()
+            })
+    }
 
     function main(){
         $usernameFld = $('#usernameFld')
@@ -88,8 +135,8 @@
 
         $createBtn = $('.wbdv-create')
         $createBtn.click(createUser)
-        // $updateBtn = $('.wbdv-update')
-        // $updateBtn.click(updateUser)
+        $updateBtn = $('.wbdv-update')
+        $updateBtn.click(updateUser)
 
 
 
