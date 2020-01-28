@@ -5,8 +5,9 @@
 
     var $firstNameFld, $lastNameFld, $roleFld;
     var $usernameFld, $passwordFld;
-    var $removeBtn, $editBtn, $createBtn, $updateBtn;
+    var $removeBtn, $editBtn, $createBtn, $updateBtn, $searchBtn;
     var selectedUser
+
 
 
     let currentUserIndex = -1
@@ -22,11 +23,12 @@
     function renderUsers(users) {
         $tbody.empty()
         for(let u in users) {
-            renderUser(u)
+            renderUser(u, users)
 
         }
     }
-    function renderUser(u) {
+
+    function renderUser(u, users) {
         let user = users[u]
         let rowClone = $userRowTemplate.clone()
         rowClone.removeClass('wbdv-hidden')
@@ -125,6 +127,57 @@
                 findAllUsers()
             })
     }
+    function searchUser() {
+        const userToSearch = {
+            username: $usernameFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            role: $roleFld.val()
+        }
+
+        var id_arr = []
+        count = 0
+        found_users = []
+
+        for (elemnent in userToSearch){
+            if(userToSearch[elemnent]){
+                count+=1
+            }
+        }
+
+        num_coincidence = 0
+
+
+        for (let u in users){
+            if (users[u].username === userToSearch.username && userToSearch.username){
+                num_coincidence++
+            }
+            if (users[u].firstName === userToSearch.firstName && userToSearch.firstName){
+                num_coincidence++
+            }
+            if (users[u].lastName === userToSearch.lastName && userToSearch.lastName) {
+                num_coincidence++
+            }
+            if (users[u].role === userToSearch.role && userToSearch.role) {
+                num_coincidence++
+            }
+            if (count == num_coincidence){
+                id_arr.push(users[u]._id)
+                found_users.push(users[u])
+            }
+            num_coincidence = 0
+        }
+        users = found_users
+        renderUsers(users)
+        // for(let i in id_arr ) {
+        //     userService.findUserById(id_arr[i]).then(foundUser => {
+        //         selectedUser = foundUser
+        //         alert(selectedUser.username)
+        //     })
+        // }
+
+    }
+
 
     function main(){
         $usernameFld = $('#usernameFld')
@@ -140,6 +193,8 @@
         $createBtn.click(createUser)
         $updateBtn = $('.wbdv-update')
         $updateBtn.click(updateUser)
+        $searchBtn = $('.wbdv-search')
+        $searchBtn.click(searchUser)
 
         $(findAllUsers())
 
