@@ -1,38 +1,51 @@
 package com.example.myapp.models;
 
+import com.sun.istack.Nullable;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="widgets")
 public class Widget {
-    private String id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String title;
     private String type = "HEADING";
-    private String topicId;
     private String name;
 
-    private int order;
+    @ManyToOne
+    private Topic topic;
+    private int widgetOrder;
 
     private String text;
     private String url;
-    private int hight;
-    private int weight;
+    //private int hight;
+    //private int weight;
     private String cssClass;
     private String style;
     private String value;
-    private int size = 2;
+    //private int size = 2;
 
-    public int getSize() {
-        return size;
+    public Topic getTopic() {
+        return topic;
     }
 
-    public void setSize(int size) {
-        this.size = size;
+    public void setTopic(Topic topic) {
+        this.topic = topic;
     }
 
-    public String getTopicId() {
-        return topicId;
-    }
 
-    public void setTopicId(String topicId) {
-        this.topicId = topicId;
-    }
+//    public int getSize() {
+//        return size;
+//    }
+//
+//    public void setSize(int size) {
+//        this.size = size;
+//    }
+
 
     public String getType() {
         return type;
@@ -42,11 +55,11 @@ public class Widget {
         this.type = type;
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -76,15 +89,23 @@ public class Widget {
     }
 
     public int getOrder() {
-        return order;
+        return widgetOrder;
     }
 
     public void setOrder(int order) {
-        this.order = order;
+        this.widgetOrder = order;
     }
 
+//    public int getHight() {
+//        return hight;
+//    }
+//
+//    public void setHight(int hight) {
+//        this.hight = hight;
+//    }
 
-    public Widget(String id, String text, String type) {
+
+    public Widget(Integer id, String text, String type) {
         this.id = id;
         this.text = text;
         this.type = type;

@@ -1,54 +1,45 @@
 package com.example.myapp.services;
 
 import com.example.myapp.models.Widget;
+import com.example.myapp.repositories.WidgetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class WidgetService {
     List<Widget> widgetList = new ArrayList<Widget>();
 
+    @Autowired
+    WidgetRepository widgetRepository;
 
-    public Widget createWidget(String tid, Widget newWidget) {
-        newWidget.setId((new Date()).getTime()+"");
-        newWidget.setTopicId(tid);
-        newWidget.setOrder(this.widgetList.size());
-        widgetList.add(newWidget);
-        return newWidget;
+
+    public Widget createWidget(Widget newWidget) {
+        return widgetRepository.save(newWidget);
     }
 
-    public Widget findWidgetById(String wid) {
-        for(Widget w: widgetList) {
-            if(w.getId().equals(wid)) {
-                return w;
-            }
-        }
-        return null;
+    public Widget findWidgetById(Integer wid) {
+        return widgetRepository.findWidgetById(wid);
     }
 
     public List<Widget> findAllWidgets() {
-        return widgetList;
+        return widgetRepository.findAllWidgets();
     }
 
-    public List<Widget> findWidgetsForTopic(String topicId) {
-        List<Widget> results = new ArrayList<Widget>();
-        for(Widget w: widgetList) {
-            if(w.getTopicId().equals(topicId)) {
-                results.add(w);
-            }
-        }
-        return results;
+    public List<Widget> findWidgetsForTopic(Integer topicId) {
+        return widgetRepository.findWidgetsForTopic(topicId);
     }
 
-    public int deleteWidget(String wid) {
-        widgetList = widgetList.stream()
-                .filter(w -> !w.getId().equals(wid)).collect(Collectors.toList());
+    public int deleteWidget(Integer wid) {
+        widgetRepository.deleteById(wid);
         return 1;
     }
 
-    public int updateWidget(String wid, Widget Widget) {
+    public int updateWidget(Integer wid, Widget Widget) {
         for(int i=0; i<widgetList.size(); i++) {
             if(widgetList.get(i).getId().equals(wid)) {
                 if(widgetList.get(i).getOrder() == Widget.getOrder()){
