@@ -16,9 +16,9 @@ public class WidgetController {
 
     @PostMapping("/api/topics/{tid}/widgets")
     public Widget createWidget(
-            @PathVariable("tid") String tid,
+            @PathVariable("tid") Integer tid,
             @RequestBody Widget newWidget) {
-        return service.createWidget(newWidget);
+        return service.createWidget(tid, newWidget);
     }
 
     @DeleteMapping("/api/widgets/{widgetId}")

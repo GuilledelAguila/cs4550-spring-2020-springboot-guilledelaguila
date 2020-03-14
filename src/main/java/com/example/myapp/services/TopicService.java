@@ -14,7 +14,7 @@ public class TopicService {
     TopicRepository topicRepository;
 
     public List<Topic> findAllTopics(){
-        return (List<Topic>)topicRepository.findAll();
+        return topicRepository.findAllTopics();
     }
 
     public List<Topic> findTopicsForLesson(String lid){
@@ -22,12 +22,24 @@ public class TopicService {
     }
 
     public int deleteTopic(Integer tid) {
-        topicRepository.deleteById(tid);
-        return 1;
+        try {
+            topicRepository.deleteById(tid);
+            return 1;
+        } catch (RuntimeException a){
+            return 0;
+        }
+    }
+
+    public Topic updateTopic(Integer tid, Topic updatedTopic){
+        return topicRepository.save(updatedTopic);
     }
 
     public Topic createTopic(String lid, Topic topic){
         return topicRepository.save(topic);
+    }
+
+    public Topic findTopicById(Integer tid){
+        return topicRepository.findTopicById(tid);
     }
 
 }

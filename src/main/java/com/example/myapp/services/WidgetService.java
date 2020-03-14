@@ -1,6 +1,8 @@
 package com.example.myapp.services;
 
+import com.example.myapp.models.Topic;
 import com.example.myapp.models.Widget;
+import com.example.myapp.repositories.TopicRepository;
 import com.example.myapp.repositories.WidgetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,8 +20,10 @@ public class WidgetService {
     @Autowired
     WidgetRepository widgetRepository;
 
-
-    public Widget createWidget(Widget newWidget) {
+    public Widget createWidget(Integer topicId, Widget newWidget) {
+        Topic temp = new Topic();
+        temp.setId(topicId);
+        newWidget.setTopic(temp);
         return widgetRepository.save(newWidget);
     }
 
@@ -39,33 +44,31 @@ public class WidgetService {
         return 1;
     }
 
-    public int updateWidget(Integer wid, Widget Widget) {
-        for(int i=0; i<widgetList.size(); i++) {
-            if(widgetList.get(i).getId().equals(wid)) {
-                if(widgetList.get(i).getOrder() == Widget.getOrder()){
-                    widgetList.set(i, Widget);
-                    return 1;
-                } else {
-                    if(widgetList.get(i).getOrder() > Widget.getOrder() && widgetList.get(i).getOrder() > 0){
-                        Widget tempWidget = widgetList.get(i-1);
-                        widgetList.set(i-1, Widget);
-                        tempWidget.setOrder(tempWidget.getOrder()+1);
-                        widgetList.set(i, tempWidget);
-                        return 1;
-                    } else if (widgetList.get(i).getOrder() < Widget.getOrder() && widgetList.get(i).getOrder() < widgetList.size()) {
-                        Widget tempWidget = widgetList.get(i+1);
-                        widgetList.set(i+1, Widget);
-                        tempWidget.setOrder(tempWidget.getOrder()-1);
-                        widgetList.set(i, tempWidget);
-                        return 1;
-                    } else {
-                        return 0;
-                    }
+    public int updateWidget(Integer wid, Widget newWidget) {
+        Widget currentWidget = widgetRepository.findWidgetById(wid);
+        newWidget.setTopic(currentWidget.getTopic());
+        int i = currentWidget.getWidgetOrder();
+        int maxOrder = widgetRepository.findMaxOrder();
 
-                }
-
+        if(currentWidget.getWidgetOrder() == newWidget.getWidgetOrder()){
+            widgetRepository.save(newWidget);
+            return 1;
+        } else {
+            if(currentWidget.getWidgetOrder() > newWidget.getWidgetOrder() && currentWidget.getWidgetOrder() > 0){
+                Widget tempWidget = widgetRepository.findWidgetByOrder(i-1);
+                tempWidget.setWidgetOrder(i);
+                widgetRepository.save(tempWidget);
+                widgetRepository.save(newWidget);
+                return 1;
+            } else if (currentWidget.getWidgetOrder() < newWidget.getWidgetOrder() && currentWidget.getWidgetOrder() < maxOrder){
+                Widget tempWidget = widgetRepository.findWidgetByOrder(i+1);
+                tempWidget.setWidgetOrder(i);
+                widgetRepository.save(tempWidget);
+                widgetRepository.save(newWidget);
+                return 1;
+            } else {
+                return 0;
             }
         }
-        return 0;
     }
 }

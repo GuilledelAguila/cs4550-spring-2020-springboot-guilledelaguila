@@ -11,6 +11,11 @@ public class Topic {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
+    private String lessonId;
+    private String description;
+
+    @OneToMany(mappedBy = "topic")
+    private List<Widget> widgets;
 
     public String getLessonId() {
         return lessonId;
@@ -19,12 +24,6 @@ public class Topic {
     public void setLessonId(String lessonId) {
         this.lessonId = lessonId;
     }
-
-    private String lessonId;
-    private String description;
-
-    @OneToMany(mappedBy = "topic")
-    private List<Widget> widgets;
 
     public Integer getId() {
         return id;

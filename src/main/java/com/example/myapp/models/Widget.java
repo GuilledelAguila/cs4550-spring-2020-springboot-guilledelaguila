@@ -1,5 +1,6 @@
 package com.example.myapp.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.Nullable;
 
 import javax.persistence.*;
@@ -17,7 +18,11 @@ public class Widget {
     private String name;
 
     @ManyToOne
+    @JsonIgnore
     private Topic topic;
+
+
+
     private int widgetOrder;
 
     private String text;
@@ -27,7 +32,23 @@ public class Widget {
     private String cssClass;
     private String style;
     private String value;
-    //private int size = 2;
+    private int size;
+
+    public int getWidgetOrder() {
+        return widgetOrder;
+    }
+
+    public void setWidgetOrder(int widgetOrder) {
+        this.widgetOrder = widgetOrder;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 
     public Topic getTopic() {
         return topic;
@@ -36,15 +57,6 @@ public class Widget {
     public void setTopic(Topic topic) {
         this.topic = topic;
     }
-
-
-//    public int getSize() {
-//        return size;
-//    }
-//
-//    public void setSize(int size) {
-//        this.size = size;
-//    }
 
 
     public String getType() {
@@ -88,13 +100,6 @@ public class Widget {
         this.name = name;
     }
 
-    public int getOrder() {
-        return widgetOrder;
-    }
-
-    public void setOrder(int order) {
-        this.widgetOrder = order;
-    }
 
 //    public int getHight() {
 //        return hight;

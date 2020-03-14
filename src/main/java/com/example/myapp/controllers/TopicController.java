@@ -24,6 +24,12 @@ public class TopicController {
         return topicService.findTopicsForLesson(lid);
     }
 
+    @PutMapping("api/topics/{topicId}")
+    public Topic updateWidget(
+            @PathVariable("topicId") Integer tid,
+            @RequestBody Topic updatedTopic) {
+        return topicService.updateTopic(tid, updatedTopic);
+    }
 
     @DeleteMapping("api/topics/{topicId}")
     public int deleteTopic(
