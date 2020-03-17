@@ -50,9 +50,17 @@ public class WidgetService {
         int i = currentWidget.getWidgetOrder();
         int maxOrder = widgetRepository.findMaxOrder();
 
+
         if(currentWidget.getWidgetOrder() == newWidget.getWidgetOrder()){
-            widgetRepository.save(newWidget);
-            return 1;
+            if(newWidget.getStyle() == null){
+                newWidget.setStyle("UNORDERED");
+                widgetRepository.save(newWidget);
+                return 1;
+            } else {
+                widgetRepository.save(newWidget);
+                return 1;
+            }
+
         } else {
             if(currentWidget.getWidgetOrder() > newWidget.getWidgetOrder() && currentWidget.getWidgetOrder() > 0){
                 Widget tempWidget = widgetRepository.findWidgetByOrder(i-1);

@@ -30,12 +30,22 @@ public class Widget {
     //private int hight;
     //private int weight;
     private String cssClass;
+
     private String style;
     private String value;
     private int size;
 
     public int getWidgetOrder() {
         return widgetOrder;
+    }
+
+
+    public String getStyle() {
+        return style;
+    }
+
+    public void setStyle(String style) {
+        this.style = style;
     }
 
     public void setWidgetOrder(int widgetOrder) {
@@ -58,6 +68,13 @@ public class Widget {
         this.topic = topic;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public String getType() {
         return type;
